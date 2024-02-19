@@ -43,21 +43,21 @@
 > #### NAVEGADOR: 
 >
 > 
->> :bulb: <localhost:8080/realtimeproducts> ----> para el socket de actualización en tiempo real  <br> 
->> :bulb: <localhost:8080/chat> ----> para el Chat con persistencia en MongoDB  <br> 
->>:bulb: <localhost:8080/api/products> ----> para el endpoint de manipulación de productos en la base de datos  <br> 
->>:bulb: <localhost:8080/api/cart> ----> para el endpoint de manipulación de carritosen la base de datos  <br> 
+>> :bulb: localhost:8080/realtimeproducts ----> para el socket de actualización en tiempo real  <br> 
+>> :bulb: localhost:8080/chat ----> para el Chat con persistencia en MongoDB  <br> 
+>>:bulb: localhost:8080/api/products ----> para el endpoint de manipulación de productos en la base de datos  <br> 
+>>:bulb: localhost:8080/api/cart ----> para el endpoint de manipulación de carritos en la base de datos  <br> 
 ---
 
 <h3  style="text-align:center" >----> PREVIOS <---</h3> 
 
 > #### RUTAS:<br>
 >
->> :bulb: <localhost:8080/realtimeproducts> ----> para el socket de actualización en tiempo real  <br> 
+>> :bulb: localhost:8080/realtimeproducts ----> para el socket de actualización en tiempo real  <br> 
 >>
->> :bulb: <localhost:8080/home> ----> para la vista de todos los productos en la tienda  <br>
+>> :bulb: localhost:8080/home ----> para la vista de todos los productos en la tienda  <br>
 >> 
->> :bulb: <localhost:8080/> ----> Saludo
+>> :bulb: localhost:8080/ ----> Saludo
   
 ---
 

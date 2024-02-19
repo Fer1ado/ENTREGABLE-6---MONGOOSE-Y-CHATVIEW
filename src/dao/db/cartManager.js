@@ -46,7 +46,7 @@ class CartDAO {
                             console.log(prodId, carroNuevo)
                             carroNuevo[0].products.push({product: prodId})
                             console.log(carroNuevo[0])
-                            
+                            // no logre que me funcionara el metodo de referenciamiento explicado por el profe el sabado, la información llega pero mongo no reescribe el objeto
                             const prodAddtoCart = await cartModel.findOneAndUpdate({cartNumber: CARTid}, carroNuevo )
                            // {cartNumber: CARTid}, {products: [{productID: busquedaProd._id, quantity: 1}]},  )
                             const busquedaedit = await this.getCarrito(parseInt(CARTid))
@@ -59,6 +59,8 @@ class CartDAO {
                 if(added === "aumentar cantidad"){
                     
                 }
+
+               
         }
         catch (error) {
             return{status: "failed", message: error.message}

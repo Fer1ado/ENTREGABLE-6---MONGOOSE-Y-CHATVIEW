@@ -16,7 +16,7 @@ import ProductManager from "./dao/filesystem/productManager.js";
 //importacion rutas de persistencia MongogoDB
 import { MongoCartManager } from './dao/db/cartManager.js';
 import { MongoProductManager } from './dao/db/productManager.js';
-import { MongoMessagesManager } from './dao/db/messageManager.js';
+import { MongoMessageManager } from './dao/db/messageManager.js';
 
 
 
@@ -35,9 +35,13 @@ mongoose.connect(process.env.DB_CNN)
 // MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+// RUTAS ESTATICAS PARA VIEWS
 app.use("/static", express.static(_dirname + "/public"))
 app.use('/realtimeproducts', express.static(path.join(_dirname, '/public')))
 app.use('/home', express.static(path.join(_dirname, '/public')))
+app.use('/chat', express.static(path.join(_dirname, '/public')))
+
 
 // SETEO DE PUERTO
 const httpserver = app.listen(PORT, ()=>{
@@ -48,6 +52,7 @@ const httpserver = app.listen(PORT, ()=>{
 //IMPLEMENTACION SOCKET IO
 const io = new Server(httpserver)
 
+const allMesages = []
 io.on('connection', (socket)=> {
   console.log('servidor de socket io conectado')
 
@@ -73,11 +78,26 @@ io.on('connection', (socket)=> {
       socket.emit('products-data', products)
       console.log("fin remove socket")
   })
+
+  socket.emit("msg-logs", async()=>{
+    const messages = await MongoMessageManager.findAll()
+    socket.emit('msg-logs', messages)
+  })
+
+  socket.on("nuevo-usuario",(data)=>{
+    socket.broadcast.emit("nuevo-usuario", data)
+  })
+
+  socket.on("new-msg", async (data)=>{
+    let now = new Date().getTime()
+    const msg = {user: data.user, message: data.message}
+    await MongoMessageManager.create({user: data.user, message: data.message, timeStamp: now})
+    const messages = await MongoMessageManager.findAll()
+    console.log(messages)
+    io.emit("msg-logs", messages)
+  })
+
 })
-
-
-
-
 
 
 // CONFIG HANDLEBARS
@@ -88,24 +108,34 @@ app.set("view engine", "handlebars")
 
 // VISTAS
 app.get("/realtimeproducts", (req, res) => {
-  res.render ("realtimeproducts", {} )
+  res.render ("realtimeproducts", {
+    js:"rtprod.js",
+    css:"style.css"
+  } )
 })
 
 app.get("/home", async (req, res)=> {
   const products = await manager.getProducts()
   console.log(JS)
-  res.render("home", {...products})
+  res.render("home", {
+    js: "rtprod.js",
+    css: "style.css",
+  })
 })
 
 app.get("/chat", async (req, res)=>{
-  const msgs = {}
+  res.render("chat",{
+    js: "chat.js",
+    css: "chat.css"
+  })
 })
 
 
 //ROUTES
 app.use("/api/products", prodRoute);
 app.use("/api/cart", cartRoute)
-app.use("/api/realtimeproducts", viewsRoute);
+app.use("/realtimeproducts", viewsRoute);
+app.use("/chat", viewsRoute);
 
 
 const manager = new ProductManager()

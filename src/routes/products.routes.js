@@ -26,7 +26,7 @@ prodRoute.post("/", async (req, res) => {
 });
 
 prodRoute.post("/many", async (req, res) => {
-  res.send(await MongoProductManager.addProduct(req.body))   
+  res.send(await MongoProductManager.addMany(req.body))   
 });
 
 //editado de producto

@@ -11,7 +11,7 @@ const getCurrentDate = () => {
 };
 
 const messagesSchema = new Schema({
-    email:{
+    user:{
         type: String,
         required: true
     },
@@ -19,7 +19,7 @@ const messagesSchema = new Schema({
         type: String,
         required: true
     },
-    postTime: {
+    timeStamp: {
         type: String,
         default: getCurrentDate //Me devuelve algo así: "2023-09-16 14:30"
     }

@@ -1,6 +1,6 @@
 export default class Cart{
     constructor(productId, quantity){
-        this.cartId = Cart.agregarId()
+        this.cartNumber = Cart.agregarId()
         this.products = []
     }
 

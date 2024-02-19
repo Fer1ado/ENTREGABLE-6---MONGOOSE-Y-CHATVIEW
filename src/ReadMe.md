@@ -4,9 +4,52 @@
 
 ---
 
-
-
 <h3  style="text-align:center" >----> TESTING <---</h3> 
+
+
+   Desafío "Primera práctica de integración sobre tu ecommerce": 
+   En este trabajo debemos hacer la conexión de nuestro proyecto con una base de datos: 
+   Utilizaremos Mongo y mongoose para agregar el modelo de persistencia a nuestro proyecto
+   Debemos crear una base de datos llamada "ecommerce" dentro de Mongodb Atlas, crear sus colecciones "carts", "messages", "products" y sus respectivos schemas 
+   Debemos separar los managers de fileSystem de los managers de Mongodb en una sola carpeta "dao". Dentro de dao, agregar también una carpeta "models" donde vivirán los esquemas de Mongodb<br>
+1. Creé la carpeta "dao" con las subcarpetas solicitadas
+2. Creé el archivo ".env" para ocultar contraseñas
+3. Modifiqué "app.js" para hacer la conexión con la base de datos e incluyo la nueva vista del chat
+4. Modifiqué "views" para hacer una vista que contenga el chat
+5. Se implemento persistencia de datos de MongoDB para el almacenamiento de productos, carritos y mensajes del chat.
+
+  
+6. #### Endpoints activos en el proyecto:
+
+
+│ METHOD│ ROUTE│
+│----│---│
+│ GET GET POST DELETE │ /realtimeproducts │
+│ GET                     │ /home                                            │
+│ GET GET POST DELETE     │ /chat                                            │
+│ GET                     │ /api/products/:pid                               │
+│ GET                     │ /api/products/:limit?                            │
+│ POST                    │ /api/products                                    │
+│ POST                    │ /api/products/many                               │
+│ PUT DELETE              │ /api/products/:id                                │
+│ GET DELETE              │ /api/cart/:cid                                   │
+│ GET POST                │ /api/cart                                        │
+│ POST                    │ /api/cart/:cid/product/:pid                      │
+
+
+<br>
+
+> .
+> #### NAVEGADOR: 
+>.
+> 
+>> :bulb: <localhost:8080/realtimeproducts> ----> para el socket de actualización en tiempo real  <br> 
+>> :bulb: <localhost:8080/chat> ----> para el Chat con persistencia en MongoDB  <br> 
+>>:bulb: <localhost:8080/api/products> ----> para el endpoint de manipulación de productos en la base de datos  <br> 
+>>:bulb: <localhost:8080/api/cart> ----> para el endpoint de manipulación de carritosen la base de datos  <br> 
+---
+
+<h3  style="text-align:center" >----> PREVIOS <---</h3> 
 
 > #### RUTAS:<br>
 >

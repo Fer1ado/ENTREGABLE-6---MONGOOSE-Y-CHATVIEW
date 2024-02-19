@@ -1,6 +1,6 @@
 
 
-<h1  style="text-align:center" > npm start para correr el programa </h1> 
+<h1  style="text-align:center" > <font color="red">npm start</font> para levantar el programa </h1> 
 
 ---
 
@@ -21,27 +21,27 @@
   
 6. #### Endpoints activos en el proyecto:
 
+| METHOD              | ROUTE |
+| :---------------- | :------: | 
+| GET GET POST DELETE       |   <localhost:8080/realtimeproducts>  |
+| GET            |    <localhost:8080/home>   | 
+| GET GET POST DELETE    |  <localhost:8080/chat>   | 
+| GET  |  <localhost:8080/api/products/:pid>   | 
+| GET  |  <localhost:8080/api/products/:limit?>    | 
+| POST  |  <localhost:8080/api/products>   | 
+| POST |  <localhost:8080/api/products/many>   | 
+| PUT DELETE |  <localhost:8080/api/products/:id>   |
+| GET DELETE  |  <localhost:8080/api/cart/:cid>   |
+| GET POST |  <localhost:8080/api/cart>   |
+| POST |  <localhost:8080/api/cart/:cid/product/:pid>  |
 
-│ METHOD│ ROUTE│
-│----│---│
-│ GET GET POST DELETE │ /realtimeproducts │
-│ GET                     │ /home                                            │
-│ GET GET POST DELETE     │ /chat                                            │
-│ GET                     │ /api/products/:pid                               │
-│ GET                     │ /api/products/:limit?                            │
-│ POST                    │ /api/products                                    │
-│ POST                    │ /api/products/many                               │
-│ PUT DELETE              │ /api/products/:id                                │
-│ GET DELETE              │ /api/cart/:cid                                   │
-│ GET POST                │ /api/cart                                        │
-│ POST                    │ /api/cart/:cid/product/:pid                      │
 
 
 <br>
 
-> .
+> 
 > #### NAVEGADOR: 
->.
+>
 > 
 >> :bulb: <localhost:8080/realtimeproducts> ----> para el socket de actualización en tiempo real  <br> 
 >> :bulb: <localhost:8080/chat> ----> para el Chat con persistencia en MongoDB  <br> 
